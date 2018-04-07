@@ -1,0 +1,57 @@
+1. (10 pts) Describe (briefly) three advantages that a DBMS provides over an
+application using simple file i/o for data persistence.
+
+2. (10 pts) In the format of
+TableName1(Attribute1, Attribute2, Attribute3,…)
+
+Describe a schema that can store data for a pet grooming shop, including the
+services they provide, their customers, their customers' pet(s), and a history
+of the grooming that has been performed. Underline the attributes making
+up the primary key of each table. Describe foreign keys in a separate line,
+like:
+  Attribute2 is a foreign key from Table3.
+
+These parts are based on the Spy relational database, on dbclass.cs.pdx.edu
+
+Part Two (10 points per item)
+
+Give the English request that could have resulted in each of the SQL queries below (see
+Part Two for examples). (Don’t just paraphrase the SQL into words.) Also include the
+total number of rows returned.
+
+3.
+
+(a) SELECT * FROM Mission WHERE mission_status = 'ongoing';
+(b) SELECT meeting_frequency FROM team;
+(c) SELECT DISTINCT meeting_frequency FROM team;
+(d) SELECT DISTINCT A.city FROM Agent A WHERE A.salary > 180000
+ AND A.country = 'USA';
+(e) SELECT lang_id FROM LanguageRel where agent_id=56;
+
+4.
+
+(a) SELECT * FROM Agent A, SecurityClearance S
+ WHERE A.salary < 51000
+ AND (S.sc_level = 'Secret' OR S.sc_level = 'Majestic')
+ AND A.clearance_id = S.sc_id;
+
+(b) SELECT A.agent_id, A.first, A.last, A.city, A.country
+ FROM Agent A, SkillRel SR, Skill S
+ WHERE A.agent_id = SR.agent_id AND SR.skill_id = S.skill_id
+ AND S.skill = 'Sniper';
+
+Part Three (20 points each)
+
+Write a single SQL statement for each of the following queries. Show the first five rows
+of the result for each query (or fewer, if the result is smaller) and the number of rows
+returned. You should be able to write these SQL queries using only the features covered
+in the first week's lecture notes.
+
+5. What are the team names and IDs that meet monthly?
+
+6. Which teams have agents with Majestic clearance?
+(Your query shouldn’t depend on what clearance IDs are used for these clearance levels,
+just the names of the levels.)
+
+7. What are the ids and last names of all agents who speak at least two languages?
+(You can do this without COUNT.)
