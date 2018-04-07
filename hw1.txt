@@ -1,5 +1,8 @@
 1. (10 pts) Describe (briefly) three advantages that a DBMS provides over an
-application using simple file i/o for data persistence.
+application using simple file i/o for data persistence (lifetime not bound to a process.
+1. Isolation of data management for your application(s) from UI, business logic, many implementation specifics
+2. Acid transactions (Atomic, consistent, isolated, durable)
+3. Exposes a standard interface to your data (enables support engineering, reporting, ad hoc queries, pipelines to copy data
 
 2. (10 pts) In the format of
 TableName1(Attribute1, Attribute2, Attribute3,…)
@@ -10,6 +13,18 @@ of the grooming that has been performed. Underline the attributes making
 up the primary key of each table. Describe foreign keys in a separate line,
 like:
   Attribute2 is a foreign key from Table3.
+
+Services(ServiceID, Service, Price)
+
+Customers(Number, LName, FName)
+
+Pets(CustomerNumber, ID)
+Pets.CustomerNumber is a foreign key that references Customers.Number.
+
+History(Date, CustomerNumber, PetID, ServiceID)
+History.CustomerNumber is a foreign key that references Customers.Number.
+History.PetID is a foreign key that references Pets.ID.
+History.ServiceID is a foreign key that references Services.ServiceID.
 
 These parts are based on the Spy relational database, on dbclass.cs.pdx.edu
 
