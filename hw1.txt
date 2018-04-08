@@ -37,11 +37,16 @@ total number of rows returned.
 3.
 
 (a) SELECT * FROM Mission WHERE mission_status = 'ongoing';
+What are the mission id's, names, access id's, team id's of 'ongoing' missions?
 (b) SELECT meeting_frequency FROM team;
+What are the meeting frequencies of all of the teams?
 (c) SELECT DISTINCT meeting_frequency FROM team;
+What are the unique meeting frequencies of all the teams?
 (d) SELECT DISTINCT A.city FROM Agent A WHERE A.salary > 180000
  AND A.country = 'USA';
+What cities have agents of salaries greater than $180,000?
 (e) SELECT lang_id FROM LanguageRel where agent_id=56;
+What language id's are in Agent 56's possess? 
 
 4.
 
@@ -49,11 +54,15 @@ total number of rows returned.
  WHERE A.salary < 51000
  AND (S.sc_level = 'Secret' OR S.sc_level = 'Majestic')
  AND A.clearance_id = S.sc_id;
+ What information is there about the agents and their security clearance that have a salary less than 51,000, a Security Clearance level of either 'Secret' or 'Majestic'? 
 
 (b) SELECT A.agent_id, A.first, A.last, A.city, A.country
  FROM Agent A, SkillRel SR, Skill S
  WHERE A.agent_id = SR.agent_id AND SR.skill_id = S.skill_id
  AND S.skill = 'Sniper';
+ What are the agent id, agent's first and last name, agent's city, and agent's country who are snipers?
+
+
 
 Part Three (20 points each)
 
@@ -63,10 +72,18 @@ returned. You should be able to write these SQL queries using only the features 
 in the first week's lecture notes.
 
 5. What are the team names and IDs that meet monthly?
+SELECT name team_name, team_id 
+FROM Team 
+WHERE meeting_frequency = 'monthly'
 
 6. Which teams have agents with Majestic clearance?
 (Your query shouldn’t depend on what clearance IDs are used for these clearance levels,
 just the names of the levels.)
+SELECT DISTINCT T.name
+FROM Agent A, Team T, SecurityClearance S
+WHERE S.sc_level = 'Majestic'
+AND A.clearance_id = S.sc_id 
 
 7. What are the ids and last names of all agents who speak at least two languages?
 (You can do this without COUNT.)
+
